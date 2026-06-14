@@ -144,20 +144,8 @@ Durante el desarrollo práctico del laboratorio se evidenciaron tres fases de da
 Repercusiones de Fallo (Modificación On-the-fly)
 
 Si un intermediario malicioso modificara en tiempo real el campo de cabecera Message Length en un Chunk multimedia, la máquina de estados lógicos interna de decodificación de FFplay perdería la alineación de bytes. Como el reproductor depende de este campo para saber cuántos bytes componen el fotograma comprimido, leería datos aleatorios o memoria basura, provocando artefactos visuales extremos (píxeles caóticos rotos), desincronización crítica de audio, y un cuelgue definitivo de la aplicación mediante un desbordamiento de búfer (Buffer Overflow / Crash).
-Casos de Prueba
 
-Nota: Reemplace los archivos en las rutas correspondientes para que se rendericen en el repositorio de GitHub de forma correcta.
 
-    Figura 1: Handshake Inicial en Wireshark
 
-    Figura 2: Interfaz de Consola Renderizando el Patrón de Prueba de Barras con FFplay
-
-    Figura 3: Intercepción del Comando AMF0 NetStream.Play.Start
-
-Autores
-
-    Jeremías Quezada - Desarrollo de infraestructura e investigación del protocolo - GitHub Profile
-
-    Matías Droguett - Análisis de tráfico en Wireshark y documentación técnica - GitHub Profile
 
 Taller de Redes y Servicios - Universidad Diego Portales - Semestre 2026-1
