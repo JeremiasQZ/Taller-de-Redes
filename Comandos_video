@@ -1,0 +1,18 @@
+
+--- PASO 1: CREAR LA RED 
+sudo docker network create red-rtmp
+
+--- PASO 2: COMPILAR LAS IMÁGENES LOCALES 
+sudo docker build -t rtmp-server-local ./server
+sudo docker build -t rtmp-emisor-local ./emisor
+
+--- PASO 3: LEVANTAR LOS CONTENEDORES 
+# 1. Levantar el Servidor (Node-Media-Server)
+sudo docker run -d --name rtmp-server --network red-rtmp -p 1935:1935 -p 8000:8000 rtmp-server-local
+
+# 2. Levantar el Emisor 
+sudo docker run -d --name rtmp-emisor --network red-rtmp rtmp-emisor-local
+
+--- PASO 4: PRUEBA DE CLIENTE 
+ffplay rtmp://127.0.0.1/live/prueba
+
