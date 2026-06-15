@@ -4,6 +4,8 @@
 
 Modelamiento, despliegue y análisis promiscuo de tráfico de red para el protocolo de streaming en tiempo real RTMP (Real-Time Messaging Protocol) utilizando una arquitectura aislada basada en contenedores Docker (IaC) y la suite de análisis Wireshark.
 
+ Video de explicación del protocolo: [Ver en Google Drive](https://drive.google.com/file/d/10AlHkYe9eDdKKsJlvf2XbAHJkbyqq6uO/view?usp=sharing)
+
 ## Índice
 
 - [Información General](#información-general)
@@ -47,13 +49,14 @@ En el ecosistema moderno del streaming, RTMP es el estándar absoluto para la fa
 La topología está diseñada bajo el principio de Infrastructure as Code (IaC) mediante recetas locales:
 
 ```text
-tarea2-redes/
-├── client/
+Taller-de-Redes/
+├── Comandos_video/         # Recursos multimedia del proyecto
+├── emisor/
 │   └── Dockerfile          # Configuración del emisor automatizado con FFmpeg
 ├── server/
 │   └── Dockerfile          # Configuración del servidor con Node-Media-Server
 ├── README.md               # Esta guía de documentación del repositorio
-└── logo.png                # Identificador gráfico institucional
+└── Tarea_2_Taller_de_Redes-2.pdf  # Informe del proyecto
 ```
 
 ---
@@ -96,7 +99,7 @@ EXPOSE 1935 8000
 CMD ["node-media-server"]
 ```
 
-### B. Dockerfile del Emisor (`./client/Dockerfile`)
+### B. Dockerfile del Emisor (`./emisor/Dockerfile`)
 
 ```dockerfile
 FROM alpine:3.19
@@ -121,11 +124,11 @@ sudo docker network create red-rtmp
 
 ### Paso 2: Compilar las imágenes locales (IaC)
 
-Sitúese en el directorio raíz `tarea2-redes/` y construya sus propias imágenes de aplicación:
+Sitúese en el directorio raíz `Taller-de-Redes/` y construya sus propias imágenes de aplicación:
 
 ```bash
 sudo docker build -t rtmp-server-local ./server
-sudo docker build -t rtmp-emisor-local ./client
+sudo docker build -t rtmp-emisor-local ./emisor
 ```
 
 ### Paso 3: Inicializar el Servidor Central
